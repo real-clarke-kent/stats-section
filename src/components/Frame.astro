@@ -1,0 +1,19 @@
+---
+type Props = {
+  padding: "sm" | "md";
+  class?: string;
+};
+
+const { class: className, padding = "md" } = Astro.props;
+---
+
+<div
+  class:list={[
+    "flex flex-col rounded-lg border border-primary bg-primary",
+    padding === "sm" && "gap-4 py-6 shadow-base",
+    padding === "md" && "gap-y-8 p-8 shadow-lg",
+    className,
+  ]}
+>
+  <slot />
+</div>

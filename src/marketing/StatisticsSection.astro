@@ -1,0 +1,38 @@
+---
+import GridSection from "@/components/GridSection.astro";
+import HeaderSection from "@/components/HeaderSection.astro";
+import { Image } from "astro:assets";
+
+type Props = {
+  image: ImageMetadata;
+};
+
+const { image } = Astro.props;
+---
+
+<GridSection>
+  <HeaderSection padding="sm">
+    <Fragment slot={"tagline"}><slot name="tagline" /></Fragment>
+    <Fragment slot={"headline"}><slot name="headline" /></Fragment>
+    <Fragment slot={"description"}><slot name="description" /></Fragment>
+  </HeaderSection>
+
+  <div
+    class="col-span-full grid grid-cols-subgrid items-center gap-x-8 gap-y-12 object-contain tablet:gap-y-16"
+  >
+    <Image
+      src={image}
+      alt=""
+      width={image.width}
+      height={image.height}
+      densities={[1, 1.5, 2]}
+      loading="eager"
+      class="col-span-full h-[311px] object-cover tablet:h-[656px] desktop:col-span-6 desktop:h-full"
+    />
+    <div
+      class="col-span-full flex flex-col gap-y-6 tablet:gap-y-8 desktop:col-span-6"
+    >
+      <slot name="body" />
+    </div>
+  </div>
+</GridSection>

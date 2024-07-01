@@ -1,0 +1,73 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import PricingSimple from "@/marketing/PricingSimple.astro";
+import FeatureLineItem from "@/marketing/FeatureLineItem.astro";
+import Frame from "@/components/Frame.astro";
+import Badge from "@/components/Badge.astro";
+import Button from "@/components/Button.astro";
+
+import "@/styles/base.css";
+
+const features = [
+  "128 available credits for all images",
+  "Up to 3 users",
+  "24 hour response time",
+  "Advanced analytics",
+];
+---
+
+<Layout title="Great Frontend Projects">
+  <main class="linear-bg flex min-h-dvh p-4">
+    <div
+      class="flex w-full items-center justify-center rounded-md bg-primary shadow-sm tablet:shadow-md desktop:shadow-lg"
+    >
+      <PricingSimple>
+        <Fragment slot="tagline">One time purchase</Fragment>
+        <Fragment slot="headline">Pay as you need</Fragment>
+        <Fragment slot="description">
+          We offer one-time purchases with credits, for you to use as needed.
+          Always active.
+        </Fragment>
+
+        <Fragment slot="body">
+          <h2 class="text-2xl font-semibold tablet:text-4xl">
+            Unlock creativity once, enjoy forever
+          </h2>
+          <ul class="flex flex-col gap-5 text-secondary desktop:px-4">
+            {features.map((text) => <FeatureLineItem>{text}</FeatureLineItem>)}
+          </ul>
+        </Fragment>
+
+        <Fragment slot="cta">
+          <Frame>
+            <div class="flex flex-col items-center gap-y-2">
+              <Badge size="lg" variant="success">Popular</Badge>
+              <h3
+                class="text-5xl font-semibold tablet:text-6xl tablet:font-bold"
+              >
+                $699
+              </h3>
+              <p class="text-sm">Prices in USD</p>
+            </div>
+            <p
+              class="text-balance px-8 text-center text-xl tablet:px-52 desktop:px-24"
+            >
+              Pay once, use it forever. No strings attached.
+            </p>
+            <Button variant="primary" class="w-full">Buy now</Button>
+          </Frame>
+        </Fragment>
+      </PricingSimple>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .linear-bg {
+    background: linear-gradient(148deg, #f9fafb 8.89%, #d2d6db 100.48%);
+  }
+
+  .linear-hero {
+    background: linear-gradient(176deg, #f9fafb 0.94%, #edf0f3 316.54%);
+  }
+</style>

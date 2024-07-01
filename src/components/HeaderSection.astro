@@ -1,0 +1,36 @@
+---
+type Props = {
+  padding?: "sm" | "md";
+  class?: string;
+};
+
+const { class: classNames, padding = "md" } = Astro.props;
+---
+
+<header
+  class:list={[
+    "col-span-full flex flex-col items-center gap-y-5",
+    padding === "sm" && "desktop:mx-8",
+    padding === "md" && "desktop:mx-40",
+    classNames,
+  ]}
+>
+  <div
+    class:list={[
+      "flex w-full flex-col items-center gap-y-3",
+      padding === "md" && "desktop:px-10",
+    ]}
+  >
+    <p class="font-semibold text-brand">
+      <slot name="tagline" />
+      <h1
+        class="text-balance text-center text-3xl font-semibold text-primary tablet:text-5xl"
+      >
+        <slot name="headline" />
+      </h1>
+    </p>
+  </div>
+  <p class="text-balance text-center text-lg tablet:text-xl">
+    <slot name="description" />
+  </p>
+</header>

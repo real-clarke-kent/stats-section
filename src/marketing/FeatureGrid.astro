@@ -1,0 +1,18 @@
+---
+import GridSection from "@/components/GridSection.astro";
+import HeaderSection from "@/components/HeaderSection.astro";
+---
+
+<GridSection>
+  <HeaderSection>
+    <Fragment slot={"tagline"}><slot name="tagline" /></Fragment>
+    <Fragment slot={"headline"}><slot name="headline" /></Fragment>
+    <Fragment slot={"description"}><slot name="description" /></Fragment>
+  </HeaderSection>
+
+  <ul
+    class="col-span-full grid grid-cols-subgrid gap-8 desktop:gap-x-8 desktop:gap-y-12"
+  >
+    <slot />
+  </ul>
+</GridSection>

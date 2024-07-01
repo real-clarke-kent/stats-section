@@ -1,0 +1,27 @@
+---
+import GridSection from "@/components/GridSection.astro";
+import HeaderSection from "@/components/HeaderSection.astro";
+---
+
+<GridSection
+  class="mx-3 my-12 gap-y-16 tablet:mx-4 tablet:my-16 desktop:mx-24 desktop:my-24"
+>
+  <HeaderSection>
+    <Fragment slot={"tagline"}><slot name="tagline" /></Fragment>
+    <Fragment slot={"headline"}><slot name="headline" /></Fragment>
+    <Fragment slot={"description"}><slot name="description" /></Fragment>
+  </HeaderSection>
+
+  <div
+    class="col-span-full grid grid-cols-subgrid items-center gap-y-8 tablet:gap-y-12 desktop:gap-x-8"
+  >
+    <div
+      class="col-span-full flex flex-col gap-y-8 tablet:gap-y-16 desktop:col-span-7"
+    >
+      <slot name="body" />
+    </div>
+    <div class="col-span-full desktop:col-span-5">
+      <slot name="cta" />
+    </div>
+  </div>
+</GridSection>

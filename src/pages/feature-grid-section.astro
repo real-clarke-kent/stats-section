@@ -1,0 +1,97 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import FeatureGrid from "@/marketing/FeatureGrid.astro";
+import FeatureGridItem from "@/marketing/FeatureGridItem.astro";
+import DownloadIcon from "@/icons/Download.astro";
+import BrushIcon from "@/icons/Brush.astro";
+import CopyrightIcon from "@/icons/Copyright.astro";
+import RefundIcon from "@/icons/Refund.astro";
+import TeamIcon from "@/icons/Team.astro";
+import RefreshIcon from "@/icons/Refresh.astro";
+
+import "@/styles/base.css";
+---
+
+<Layout title="Great Frontend Projects">
+  <main class="linear-bg flex min-h-dvh p-4">
+    <div
+      class="flex w-full items-center justify-center rounded-md bg-primary shadow-sm tablet:shadow-md desktop:shadow-lg"
+    >
+      <FeatureGrid>
+        <Fragment slot="tagline">Premium abstract images</Fragment>
+        <Fragment slot="headline">Easy access to top quality images</Fragment>
+        <Fragment slot="description">
+          In a world where storytelling constantly evolves, we lead with
+          groundbreaking images designed for your presentation excellence.
+        </Fragment>
+
+        <Fragment>
+          <FeatureGridItem>
+            <Fragment slot="icon"><DownloadIcon class="h-6 w-6" /></Fragment>
+            <Fragment slot="title">Infinite Download</Fragment>
+            <Fragment>
+              Once you subscribe to our plans, they're all yours. Download as
+              many as you want and use them for work presentations, wallpapers,
+              and much more.
+            </Fragment>
+          </FeatureGridItem>
+
+          <FeatureGridItem>
+            <Fragment slot="icon"><BrushIcon class="h-6 w-6" /></Fragment>
+            <Fragment slot="title">Purely Handcrafted</Fragment>
+            <Fragment>
+              No AI, no generic images. Crafted from various chemicals, fabrics,
+              clouds, or even particles as small as dust.
+            </Fragment>
+          </FeatureGridItem>
+
+          <FeatureGridItem>
+            <Fragment slot="icon"><CopyrightIcon class="h-6 w-6" /></Fragment>
+            <Fragment slot="title">All Are Under licensed</Fragment>
+            <Fragment>
+              The only limitation with these abstract images is that you are not
+              able to sell them in any form, whether digital or hard copy (such
+              as paintings or prints on paper).
+            </Fragment>
+          </FeatureGridItem>
+
+          <FeatureGridItem>
+            <Fragment slot="icon"><RefundIcon class="h-6 w-6" /></Fragment>
+            <Fragment slot="title">Cancel Anytime</Fragment>
+            <Fragment>
+              Subscribe at your own pace, and cancel when you feel it's enough.
+            </Fragment>
+          </FeatureGridItem>
+
+          <FeatureGridItem>
+            <Fragment slot="icon"><TeamIcon class="h-6 w-6" /></Fragment>
+            <Fragment slot="title">Empowering For Team</Fragment>
+            <Fragment>
+              We support multiple seats at once, requiring only a single
+              payment.
+            </Fragment>
+          </FeatureGridItem>
+
+          <FeatureGridItem>
+            <Fragment slot="icon"><RefreshIcon class="h-6 w-6" /></Fragment>
+            <Fragment slot="title">No Limitations</Fragment>
+            <Fragment>
+              Use as many as you want, from Dribbble presentations to PowerPoint
+              presentations.
+            </Fragment>
+          </FeatureGridItem>
+        </Fragment>
+      </FeatureGrid>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .linear-bg {
+    background: linear-gradient(148deg, #f9fafb 8.89%, #d2d6db 100.48%);
+  }
+
+  .linear-hero {
+    background: linear-gradient(176deg, #f9fafb 0.94%, #edf0f3 316.54%);
+  }
+</style>

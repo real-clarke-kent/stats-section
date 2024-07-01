@@ -1,0 +1,35 @@
+---
+import { Image } from "astro:assets";
+import GridSection from "@/components/GridSection.astro";
+
+type Props = {
+  image: ImageMetadata;
+};
+
+const { image } = Astro.props;
+---
+
+<GridSection>
+  <header
+    class="col-span-full grid grid-cols-subgrid gap-y-8 tablet:gap-y-16 desktop:col-span-5"
+  >
+    <div class="col-span-full flex flex-col gap-y-8 tablet:gap-y-16">
+      <slot name="header" />
+      <slot name="body" />
+    </div>
+
+    <div class="col-span-full grid grid-cols-subgrid">
+      <slot />
+    </div>
+  </header>
+
+  <Image
+    src={image}
+    alt=""
+    width={image.width}
+    height={image.height}
+    densities={[1, 1.5, 2]}
+    loading="eager"
+    class="col-span-full rounded-2xl desktop:col-span-7"
+  />
+</GridSection>

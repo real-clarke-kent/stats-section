@@ -1,0 +1,68 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import StatisticsSection from "@/marketing/StatisticsSection.astro";
+import Frame from "@/components/Frame.astro";
+
+import image from "@/assets/statistics-2.png";
+import "@/styles/base.css";
+import type { StatisticsResponse } from "@/types/statistics";
+
+export const prerender = false; // Enforce SSR at runtime
+
+const response = await fetch(
+  "https://www.greatfrontend.com/api/projects/challenges/statistics-metrics",
+);
+const { data } = (await response.json()) as StatisticsResponse;
+
+function getLabel(key: string) {
+  switch (key) {
+    case "downloads":
+      return "Downloads";
+    case "paid_users":
+      return "Paid users";
+    case "library_images":
+      return "Images in Library";
+  }
+}
+
+function formatValue(n: number) {
+  return new Intl.NumberFormat("en-US").format(n);
+}
+---
+
+<Layout title="Great Frontend Projects">
+  <main class="linear-bg flex min-h-dvh p-4">
+    <div
+      class="flex w-full items-center justify-center rounded-md bg-primary shadow-sm tablet:shadow-md desktop:shadow-lg"
+    >
+      <StatisticsSection image={image}>
+        <Fragment slot="tagline">Statistics</Fragment>
+        <Fragment slot="headline">More than premium abstract imagery</Fragment>
+        <Fragment slot="description">
+          Our platform is more than just as a service to us – it is a catalyst
+          for enriching lives through premium abstract imagery.
+        </Fragment>
+
+        <Fragment slot="body">
+          <p class="text-lg">Our mission, in numbers</p>
+          {
+            data.map((kv) => (
+              <Frame padding="sm" class="items-center">
+                <p class="text-4xl font-bold text-brand tablet:text-5xl">
+                  {formatValue(kv.value)}
+                </p>
+                <p class="text-xl text-secondary">{getLabel(kv.metric)}</p>
+              </Frame>
+            ))
+          }
+        </Fragment>
+      </StatisticsSection>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .linear-bg {
+    background: linear-gradient(148deg, #f9fafb 8.89%, #d2d6db 100.48%);
+  }
+</style>

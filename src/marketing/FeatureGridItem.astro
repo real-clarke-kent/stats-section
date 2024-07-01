@@ -1,0 +1,15 @@
+---
+import ThumbnailIcon from "@/components/ThumbnailIcon.astro";
+---
+
+<li
+  class="col-span-full flex flex-col items-center gap-y-5 tablet:col-span-3 desktop:col-span-4"
+>
+  <ThumbnailIcon><slot name="icon" /></ThumbnailIcon>
+  <div class="flex flex-col gap-y-2">
+    <h2 class="w-full text-balance text-center text-xl font-semibold">
+      <slot name="title" />
+    </h2>
+    <p class="w-full text-balance text-center"><slot /></p>
+  </div>
+</li>
